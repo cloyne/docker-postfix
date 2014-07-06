@@ -1,0 +1,22 @@
+#!/bin/bash -e
+
+if [ "$MAILNAME" ]; then
+    echo "$MAILNAME" > /etc/mailname
+fi
+
+if [ "$MY_NETWORKS" ]; then
+    postconf -e mynetworks="$MY_NETWORKS"
+fi
+
+if [ "$ROOT_ALIAS" ]; then
+    sed -i '/^root:/d' /etc/aliases
+    echo "root: $ROOT_ALIAS" >> /etc/aliases
+    newaliases
+fi
+
+# We have to start and stop postfix first through init.d to populate
+# postfix spool directory for chroot in which postfix is running
+/etc/init.d/postfix start
+/etc/init.d/postfix abort
+
+exec /usr/lib/postfix/master -c /etc/postfix -d 2>&1
