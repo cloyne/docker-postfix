@@ -9,7 +9,7 @@ COPY ./etc /etc
 
 RUN apt-get update -q -q && \
  echo postfix postfix/main_mailer_type string "'Internet Site'" | debconf-set-selections && \
- echo postfix postfix/mynetworks string "172.17.0.0/16 127.0.0.0/8" | debconf-set-selections && \
+ echo postfix postfix/mynetworks string "192.168.0.0/16 172.17.0.0/16 127.0.0.0/8" | debconf-set-selections && \
  echo postfix postfix/mailname string temporary.example.com | debconf-set-selections && \
  apt-get install postfix --yes --force-yes && \
  postconf -e mydestination="localhost.localdomain, localhost" && \

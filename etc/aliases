@@ -11,3 +11,4 @@ abuse: root
 noc: root
 security: root
 postfix: root
+printer: root
