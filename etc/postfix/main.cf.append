@@ -1,0 +1,22 @@
+
+# main.cf.append is appended to main.cf when creating a Docker image.
+# To modify everything below here modify main.cf.append and build a Docker
+# image again.
+
+virtual_mailbox_domains = cloyne.org, cloyne.net
+
+virtual_minimum_uid = 65534
+virtual_uid_maps = static:65534
+virtual_gid_maps = static:65534
+virtual_mailbox_base = /tmp
+
+virtual_alias_maps =
+  regexp:/etc/postfix/global_alias
+  regexp:/etc/sympa/shared/sympa_rewrite
+transport_maps =
+  regexp:/etc/sympa/shared/sympa_transport
+
+sympa_destination_recipient_limit = 1
+sympadomain_destination_recipient_limit = 1
+sympabounce_destination_recipient_limit = 1
+sympabouncedomain_destination_recipient_limit = 1

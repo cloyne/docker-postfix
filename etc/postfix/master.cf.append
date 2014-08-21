@@ -1,0 +1,16 @@
+# master.cf.append is appended to master.cf when creating a Docker image.
+# To modify everything below here modify master.cf.append and build a Docker
+# image again.
+
+sympa	unix	-	n	n	-	-	pipe
+  -o soft_bounce=yes
+  flags=RF user=mailpipe:mailpipe argv=/usr/bin/ssh -i /etc/sympa/shared/id_rsa -o UserKnownHostsFile=/etc/sympa/shared/known_hosts -T sympa@sympa.sympa.server2.docker /usr/lib/sympa/bin/queue ${recipient}
+sympadomain	unix	-	n	n	-	-	pipe
+  -o soft_bounce=yes
+  flags=RF user=mailpipe:mailpipe argv=/usr/bin/ssh -i /etc/sympa/shared/id_rsa -o UserKnownHostsFile=/etc/sympa/shared/known_hosts -T sympa@sympa.sympa.server2.docker /usr/lib/sympa/bin/queue sympa@${domain}
+sympabounce	unix	-	n	n	-	-	pipe
+  -o soft_bounce=yes
+  flags=RF user=mailpipe:mailpipe argv=/usr/bin/ssh -i /etc/sympa/shared/id_rsa -o UserKnownHostsFile=/etc/sympa/shared/known_hosts -T sympa@sympa.sympa.server2.docker /usr/lib/sympa/bin/bouncequeue ${user}@${domain}
+sympabouncedomain	unix	-	n	n	-	-	pipe
+  -o soft_bounce=yes
+  flags=RF user=mailpipe:mailpipe argv=/usr/bin/ssh -i /etc/sympa/shared/id_rsa -o UserKnownHostsFile=/etc/sympa/shared/known_hosts -T sympa@sympa.sympa.server2.docker /usr/lib/sympa/bin/bouncequeue sympa@${domain}

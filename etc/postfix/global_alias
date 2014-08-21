@@ -1,0 +1,1 @@
+/^(mailer-daemon|postmaster|nobody|hostmaster|usenet|news|webmaster|www|ftp|abuse|noc|security|postfix|root)@/	root
