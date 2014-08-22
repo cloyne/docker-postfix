@@ -2,6 +2,7 @@
 
 if [ "$MAILNAME" ]; then
     echo "$MAILNAME" > /etc/mailname
+    postconf -e myhostname="$MAILNAME"
 fi
 
 if [ "$MY_NETWORKS" ]; then
