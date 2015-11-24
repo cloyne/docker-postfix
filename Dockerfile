@@ -22,4 +22,5 @@ RUN apt-get update -q -q && \
  apt-get install rsyslog --no-install-recommends --yes --force-yes && \
  sed -i 's/\/var\/log\/mail/\/var\/log\/postfix\/mail/' /etc/rsyslog.conf && \
  cat /etc/postfix/master.cf.append >> /etc/postfix/master.cf && \
- cat /etc/postfix/main.cf.append >> /etc/postfix/main.cf
+ cat /etc/postfix/main.cf.append >> /etc/postfix/main.cf && \
+ postmap /etc/postfix/recipient_canonical
