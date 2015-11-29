@@ -1,0 +1,3 @@
+if [ -e /etc/sympa/shared/id_rsa ]; then
+  chown mailpipe /etc/sympa/shared/id_rsa*
+fi
