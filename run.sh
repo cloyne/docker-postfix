@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 # A script for running this image at the Cloyne deployment. See the README file for details.
-# Moreover, it uses tozd/hosts for service discovery and mounts its volume (/srv/var/hosts).
+# Moreover, it uses tozd/docker-hosts for service discovery and mounts its volume (/srv/var/hosts).
 
 mkdir -p /srv/var/log/postfix
 mkdir -p /srv/postfix
