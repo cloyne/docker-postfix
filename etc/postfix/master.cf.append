@@ -4,13 +4,13 @@
 
 sympa	unix	-	n	n	-	-	pipe
   -o soft_bounce=yes
-  flags=RF user=mailpipe:mailpipe argv=/usr/bin/ssh -i /etc/sympa/shared/id_rsa -o UserKnownHostsFile=/etc/sympa/shared/known_hosts -T sympa@sympa.server2.docker /usr/lib/sympa/bin/queue ${recipient}
+  flags=RF user=mailpipe:mailpipe argv=/usr/bin/ssh -i /etc/sympa/shared/id_rsa -o UserKnownHostsFile=/etc/sympa/shared/known_hosts -T sympa@sympa queue ${recipient}
 sympadomain	unix	-	n	n	-	-	pipe
   -o soft_bounce=yes
-  flags=RF user=mailpipe:mailpipe argv=/usr/bin/ssh -i /etc/sympa/shared/id_rsa -o UserKnownHostsFile=/etc/sympa/shared/known_hosts -T sympa@sympa.server2.docker /usr/lib/sympa/bin/queue sympa@${domain}
+  flags=RF user=mailpipe:mailpipe argv=/usr/bin/ssh -i /etc/sympa/shared/id_rsa -o UserKnownHostsFile=/etc/sympa/shared/known_hosts -T sympa@sympa queue sympa@${domain}
 sympabounce	unix	-	n	n	-	-	pipe
   -o soft_bounce=yes
-  flags=RF user=mailpipe:mailpipe argv=/usr/bin/ssh -i /etc/sympa/shared/id_rsa -o UserKnownHostsFile=/etc/sympa/shared/known_hosts -T sympa@sympa.server2.docker /usr/lib/sympa/bin/bouncequeue ${user}@${domain}
+  flags=RF user=mailpipe:mailpipe argv=/usr/bin/ssh -i /etc/sympa/shared/id_rsa -o UserKnownHostsFile=/etc/sympa/shared/known_hosts -T sympa@sympa bouncequeue ${user}@${domain}
 sympabouncedomain	unix	-	n	n	-	-	pipe
   -o soft_bounce=yes
-  flags=RF user=mailpipe:mailpipe argv=/usr/bin/ssh -i /etc/sympa/shared/id_rsa -o UserKnownHostsFile=/etc/sympa/shared/known_hosts -T sympa@sympa.server2.docker /usr/lib/sympa/bin/bouncequeue sympa@${domain}
+  flags=RF user=mailpipe:mailpipe argv=/usr/bin/ssh -i /etc/sympa/shared/id_rsa -o UserKnownHostsFile=/etc/sympa/shared/known_hosts -T sympa@sympa bouncequeue sympa@${domain}
