@@ -1,5 +1,7 @@
 FROM tozd/postfix
 
+VOLUME /etc/sympa/shared
+
 RUN apt-get update -q -q && \
  apt-get install adduser openssh-client --yes --force-yes && \
  adduser --system --group mailpipe --no-create-home --home /nonexistent && \
