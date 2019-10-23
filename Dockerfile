@@ -1,4 +1,4 @@
-FROM tozd/postfix
+FROM tozd/postfix:ubuntu-bionic
 
 VOLUME /etc/sympa/shared
 
