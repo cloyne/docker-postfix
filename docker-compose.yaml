@@ -1,0 +1,28 @@
+version: '3.2'
+services:
+  mail:
+    image: cloyne/postfix
+    networks:
+      - server2.cloyne.org
+    ports:
+      - "25:25/tcp"
+      - "465:465/tcp"
+      - "587:587/tcp"
+    environment:
+      MAILNAME: mail.cloyne.org
+      MY_NETWORKS: 10.20.32.0/22 172.17.0.0/16 172.18.0.0/16 64.62.133.40/29 127.0.0.0/8
+      ROOT_ALIAS: "clonm@bsc.coop"
+      MY_DESTINATION: localhost.localdomain, localhost, mail.cloyne.org
+    volumes:
+        - /srv/sympa/etc/shared:/etc/sympa/shared
+        - /srv/rocketchat/etc/shared:/etc/rocketchat/shared
+        - /srv/var/log/postfix:/var/log/postfix
+        - /srv/postfix:/var/spool/postfix
+        - /srv/web/ssl:/ssl
+
+networks:
+  server2.cloyne.org:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: '172.18.0.0/16'
