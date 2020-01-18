@@ -1,4 +1,4 @@
-FROM clonm/postfix:ubuntu-bionic
+FROM clonm/postfix
 
 VOLUME /etc/sympa/shared
 
