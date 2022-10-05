@@ -20,3 +20,15 @@ sympa_destination_recipient_limit = 1
 sympadomain_destination_recipient_limit = 1
 sympabounce_destination_recipient_limit = 1
 sympabouncedomain_destination_recipient_limit = 1
+
+# enable auth
+smtp_sasl_auth_enable = yes
+# set username and password
+smtp_password_maps = hash:/etc/postfix/sasl/sasl_passwd
+smtp_sasl_security_options = noanonynmous
+# turn on TLS encryption
+smtp_tls_security_level = encrypt
+header_size_limit = 4096000
+# Set external SMTP relay host here IP or hostname accepted along with a port
+# number.
+relayhost = smtp.cloyne.org:587

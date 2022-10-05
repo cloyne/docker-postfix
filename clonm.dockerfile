@@ -1,6 +1,7 @@
 FROM clonm/postfix
 
 VOLUME /etc/sympa/shared
+VOLUME /etc/postfix/sasl
 
 RUN apt-get update -q -q && \
  apt-get install adduser openssh-client --yes --force-yes && \
