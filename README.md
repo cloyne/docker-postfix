@@ -8,6 +8,9 @@ should mount `/etc/sympa/shared` volume into both containers to provide necessar
 keys for communication between containers. The volume should contain also `sympa_rewrite`
 and `sympa_transport` files configuring the mailing lists which exist.
 
+You'll also need to mount `/etc/postfix/sasl` containing SASL login information.
+This talks to a relay at smtp.cloyne.org.
+
 Example of a `sympa_rewrite` file:
 
 ```
