@@ -8,7 +8,8 @@ RUN apt-get update -q -q && \
  adduser --system --group mailpipe --no-create-home --home /nonexistent && \
  cp /etc/postfix/main.cf /etc/postfix/main.cf.orig && \
  cp /etc/postfix/master.cf /etc/postfix/master.cf.orig && \
- mkdir -p /etc/service
+ mkdir -p /etc/service && \
+ sed -i '/imklog/s/^/#/' /etc/rsyslog.conf
 
 COPY ./etc/postfix /etc/postfix
 COPY ./etc/service/postfix /etc/service/postfix
