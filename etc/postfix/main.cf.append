@@ -29,6 +29,3 @@ smtp_sasl_security_options = noanonynmous
 # turn on TLS encryption
 smtp_tls_security_level = encrypt
 header_size_limit = 4096000
-# Set external SMTP relay host here IP or hostname accepted along with a port
-# number.
-relayhost = smtp.cloyne.org:587
