@@ -18,5 +18,5 @@ COPY ./etc/aliases /etc/aliases
 # make sure permissions are correct
 RUN chown -R postfix:postfix /var/lib/postfix &&\
  find /var/spool/postfix -user 105 -exec chown postfix '{}' '+' &&\
- chown -R postfix:postfix /var/spool/postfix/maildrop /var/spool/postfix/public
+ chown -R postfix:postfix /var/spool/postfix/maildrop /var/spool/postfix/public &&\
  chown -R syslog:adm /var/log/postfix
