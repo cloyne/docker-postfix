@@ -25,7 +25,8 @@ sympabouncedomain_destination_recipient_limit = 1
 smtp_sasl_auth_enable = yes
 # set username and password
 smtp_sasl_password_maps = hash:/etc/postfix/sasl/sasl_passwd
-smtp_sasl_security_options = noanonynmous
+smtp_sasl_security_options =
+smtp_sasl_type = cyrus
 # turn on TLS encryption
 smtp_tls_security_level = encrypt
 header_size_limit = 4096000
